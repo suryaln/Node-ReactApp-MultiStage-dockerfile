@@ -5,9 +5,13 @@ jobs:
   We-are-going-to-perform-ci:
     runs-on: ubuntu-latest
     steps:
-      - name: installing npm dependencies
+      - name: Checkout git Repo
         uses: actions/checkout@v7
       - name: file iruka ??
         run: ls
+      - name: install Node Dependencies
+        run: npm install
+      - name: build Node
+        run: npm run build
         
     
