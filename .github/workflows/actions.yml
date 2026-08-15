@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: installing npm dependencies
-        run: npm install
+        uses: actions/checkout@v7
+        run: ls
         
     
