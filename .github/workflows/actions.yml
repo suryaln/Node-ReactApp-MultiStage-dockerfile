@@ -32,10 +32,9 @@ jobs:
           key: ${{secrets.machine_password}}
           port: 22
           script: |
-            sudo -i
-            apt update && apt install docker.io -y
-            docker pull ${{env.docker_image}}
-            docker run -itd --name action -p 80:80 ${{env.docker_image}}
+            sudo apt update && sudo apt install docker.io -y
+            sudo docker pull ${{env.docker_image}}
+            sudo docker run -itd --name action -p 80:80 ${{env.docker_image}}
             
           
  
