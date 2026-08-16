@@ -32,9 +32,12 @@ jobs:
           key: ${{secrets.machine_password}}
           port: 22
           script: |
+            if ! command -v docker >/dev/null 2>&1; then
             sudo apt update && sudo apt install docker.io -y
+            fi
+            sudo docker rm -f action || true
             sudo docker pull ${{env.docker_image}}
-            sudo docker run -itd --name action -p 80:80 ${{env.docker_image}}
+            sudo docker run -itd --name action -p 80:80 --restart unless-stopped ${{env.docker_image}}
             
           
  
