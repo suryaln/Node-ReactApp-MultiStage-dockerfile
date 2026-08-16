@@ -29,13 +29,13 @@ jobs:
         with:
           host: ${{vars.machine_ip}}
           username: ubuntu 
-          password: ${{secrets.machine_password}}
+          key: ${{secrets.machine_password}}
           port: 22
           script: |
             sudo -i
             apt update && apt install docker.io -y
             docker pull ${{env.docker_image}}
-            docker run -itd -name action -p 80:80 ${{env.docker_image}}
+            docker run -itd --name action -p 80:80 ${{env.docker_image}}
             
           
  
