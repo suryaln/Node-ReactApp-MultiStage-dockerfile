@@ -28,7 +28,7 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{vars.machine_ip}}
-          username: root 
+          username: ubuntu 
           password: ${{secrets.machine_password}}
           port: 22
           script: |
