@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  docker_image: suryaln/pradeep:githubaction
+  docker_image: suryaln/pradeep:${{ github.run_number }}
 jobs:
   We-are-going-to-perform-ci:
     runs-on: ubuntu-latest
@@ -21,6 +21,7 @@ jobs:
       - name: Docker Image Push
         run: docker push ${{env.docker_image}}
   We-Are-Going-To-Deploy:
+    needs: We-are-going-to-perform-ci
     runs-on: ubuntu-latest
     steps:
       - name: SSH Login
